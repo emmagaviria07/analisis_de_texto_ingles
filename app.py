@@ -4,18 +4,14 @@ from textblob import TextBlob
 import re
 from googletrans import Translator
 
-# ===============================
-# 🌈 CONFIGURACIÓN GENERAL
-# ===============================
+
 st.set_page_config(
     page_title="Analizador Emocional de Texto",
     page_icon="💬",
     layout="wide"
 )
 
-# ===============================
-# 🎨 ENCABEZADO
-# ===============================
+
 st.title("💬 Analizador Emocional de Texto con TextBlob")
 st.markdown("""
 Explora la **emoción, tono y enfoque** detrás de tus palabras 🌟  
@@ -25,9 +21,7 @@ para obtener una lectura más precisa del **sentimiento** y la **subjetividad**.
 
 st.divider()
 
-# ===============================
-# 🔧 OPCIONES LATERALES
-# ===============================
+
 st.sidebar.title("⚙️ Configuración")
 modo = st.sidebar.radio(
     "Selecciona cómo ingresar el texto:",
@@ -37,9 +31,7 @@ modo = st.sidebar.radio(
 st.sidebar.markdown("---")
 st.sidebar.info("💡 Consejo: entre más largo sea el texto, más preciso será el análisis.")
 
-# ===============================
-# 🧩 FUNCIONES BASE
-# ===============================
+
 def contar_palabras(texto):
     stop_words = set([
         "a", "al", "algo", "algunas", "algunos", "ante", "antes", "como", "con", "contra",
@@ -89,9 +81,7 @@ def procesar_texto(texto):
         "texto_traducido": texto_ingles
     }
 
-# ===============================
-# 📊 VISUALIZACIONES
-# ===============================
+
 def mostrar_resultados(r):
     col1, col2 = st.columns(2)
     with col1:
@@ -149,9 +139,7 @@ def mostrar_resultados(r):
     else:
         st.write("No se detectaron frases en el texto.")
 
-# ===============================
-# 💬 ENTRADA DE TEXTO / ARCHIVO
-# ===============================
+
 if modo == "✏️ Escribir texto":
     st.subheader("✍️ Escribe tu texto para analizar:")
     texto = st.text_area("", height=180, placeholder="Escribe o pega aquí tu texto...")
@@ -175,9 +163,7 @@ else:
                 resultados = procesar_texto(contenido)
                 mostrar_resultados(resultados)
 
-# ===============================
-# 📘 SECCIÓN DE INFORMACIÓN
-# ===============================
+
 with st.expander("ℹ️ Sobre el análisis"):
     st.markdown("""
     ### Explicación del modelo:
@@ -190,8 +176,6 @@ with st.expander("ℹ️ Sobre el análisis"):
     - 🧩 **Streamlit:** para interfaz interactiva.
     """)
 
-# ===============================
-# 🪄 PIE DE PÁGINA
-# ===============================
+
 st.markdown("---")
-st.markdown("Creado con ❤️ por un desarrollador curioso — versión estética renovada ✨")
+st.markdown("Creado con ❤️ por un desarrollador curioso")
